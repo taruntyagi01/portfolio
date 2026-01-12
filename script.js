@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded",()=>{
+
 const form=document.getElementById("contactForm")
 
 form.addEventListener("submit" , async(e)=>{
@@ -26,4 +28,5 @@ form.addEventListener("submit" , async(e)=>{
     }  catch (error) {
         alert("Failed to send message")
     }
-})
+});
+});
