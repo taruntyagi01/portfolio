@@ -8,13 +8,14 @@ form.addEventListener("submit" , async(e)=>{
     const data ={
         name: form.name.value,
         email: form.email.value,
-        phone: form.phone.value,
-        service: form.service.value,
-        message: form.message.value, 
+        // phone: form.phone.value,
+        // service: form.service.value,
+        // message: form.message.value, 
     };
+
+    console.log(data.name)
     try{
-        const response = await
-        fetch("https://portfolio-backend-1-kpk8.onrender.com/contact",{
+        const response = await fetch("https://portfolio-backend-1-kpk8.onrender.com",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json",
