@@ -1,33 +1,60 @@
-document.addEventListener("DOMContentLoaded",()=>{
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contactForm");
+  const btn = document.getElementById("sendBtn");
+  const btnText = btn.querySelector(".btn-text");
+  const toast = document.getElementById("toast");
 
-const form=document.getElementById("contactForm")
-
-form.addEventListener("submit" , async(e)=>{
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const data ={
-        name: form.name.value,
-        email: form.email.value,
-        phone: form.phone.value,
-        service: form.service.value,
-        message: form.message.value
+    const data = {
+      name: form.name.value,
+      email: form.email.value,
+      phone: form.phone.value,
+      service: form.service.value,
+      message: form.message.value
     };
 
-    console.log(data.name)
-    try{
-        const response = await fetch("https://portfolio-backend-1-kpk8.onrender.com/contact",{
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json",
-            },
-            body: JSON.stringify(data),
-        });
-        const result= await response.json();
-        alert(result.message);
-        form.reset()
+    btn.disabled = true;
+    btn.classList.add("loading");
+    btnText.textContent = "Sending...";
 
-    }  catch (error) {
-        alert("Failed to send message")
+    try {
+      const response = await fetch(
+        "https://portfolio-backend-1-kpk8.onrender.com/contact",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        }
+      );
+
+      const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result.message);
+      }
+
+      btn.classList.remove("loading");
+      btn.classList.add("success");
+      btnText.textContent = "✔ Sent";
+
+      toast.classList.add("show");
+
+      setTimeout(() => {
+        toast.classList.remove("show");
+        btn.classList.remove("success");
+        btnText.textContent = "SEND MESSAGE";
+        btn.disabled = false;
+        form.reset();
+      }, 3000);
+
+    } catch (error) {
+      btn.classList.remove("loading");
+      btnText.textContent = "SEND MESSAGE";
+      btn.disabled = false;
+      alert(error.message || "Failed to send message");
     }
-});
+  });
 });

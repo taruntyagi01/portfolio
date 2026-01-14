@@ -33,18 +33,42 @@ body {
     justify-content: center;
     font-weight: bold;
 }
-.logo-name{
-    position: absolute;
-    left: 80px;
-    font-style: italic;
+.nav {
+  width: 100%;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(10, 26, 60, 0.8);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.nav-link{
-    display: flex;
-    gap: 35px;
-    position:relative;
-    left: 450px;
+/* logo + name wrapper behavior */
+.logo-name {
+  margin-left: 10px;
+  font-style: italic;
+  white-space: nowrap;
 }
+
+.nav-link {
+  display: flex;
+  gap: 150px
+}
+
+.nav-link a {
+  color: #ccc;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-link a:hover {
+  color: #fff;
+}
+
 
 .nav-link a {
     color: #ccc;
@@ -60,7 +84,6 @@ body {
     text-decoration: none;
     font-size: 13px;
      position: relative;
-     /* left: 150px; */
 }
 
 .hero {
@@ -522,5 +545,86 @@ body {
 
   .contact-box {
     padding: 35px 25px;
+  }
+}
+/* Button */
+#sendBtn {
+  position: relative;
+  padding: 12px 30px;
+  background: #4f8cff;
+  border: none;
+  color: white;
+  border-radius: 30px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+#sendBtn.loading {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+#sendBtn.success {
+  background: #28a745;
+}
+
+/* Spinner */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: spin 1s linear infinite;
+  display: none;
+}
+
+#sendBtn.loading .spinner {
+  display: block;
+}
+
+#sendBtn.loading .btn-text {
+  visibility: hidden;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #28a745;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 25px;
+  transition: all 0.4s ease;
+  z-index: 999;
+}
+
+.toast.show {
+  bottom: 30px;
+}
+@media (max-width: 900px) {
+  .nav {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .nav-link {
+    width: 100%;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .resume-btn {
+    margin: auto;
   }
 }
