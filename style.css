@@ -23,13 +23,19 @@ body {
 .logo{
     width: 40px;
     height: 40px;
-    background: rgb(170, 81, 252);
-    color: black;
-    border-radius: 50%;
+    /* background: rgb(170, 81, 252); */
+    /* color: black; */
+    /* border-radius: 50%; */
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
+}
+.logo img {
+  width: 50px;
+  height: 50px;
+  object-fit:cover;
+  border-radius: 50%;
 }
 .nav {
   width: 100%;
@@ -50,9 +56,13 @@ body {
 }
 .nav-link {
   display: flex;
-  gap: 150px
+  gap: 150px;
+  font-size: 14px;
 }
 .nav-link a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   color: #ccc;
   font-size: 14px;
   text-decoration: none;
@@ -530,8 +540,40 @@ body {
 .toast.show {
   bottom: 30px;
 }
+.footer {
+  /* background: #0f172a; */
+  color: #cbd5f5;
+  text-align: center;
+  padding: 25px 10px;
+}
+
+.footer p {
+  margin-bottom: 12px;
+  font-size: 17px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-links a {
+  color: #cbd5f5;
+  font-size: 25px;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.social-links a:hover {
+  color: #38bdf8;
+  transform: translateY(-3px);
+}
 /*MOBILE RESPONSIVE */
 @media only screen and (max-width: 768px) {
+  .logo img{
+    width: 32px;
+    height: 32px;
+  }
 
   /* HERO SECTION */
   .hero {
