@@ -23,9 +23,6 @@ body {
 .logo{
     width: 40px;
     height: 40px;
-    /* background: rgb(170, 81, 252); */
-    /* color: black; */
-    /* border-radius: 50%; */
     display: flex;
     align-items: center;
     justify-content: center;
